@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylish Signup Page</title>
+  <style>
+    body{
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+    *::-webkit-scrollbar{
+      display: none;
+    }
+    #totem {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #6a11cb, #ffffff);
+      color: #fff;
+      transition: all 2s ease-in-out;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      background: transparent;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 300px;
+      height: 50vh;
+      text-align: center;
+      transition: all 0.5s ease-in-out;
+      animation: fadeInn 2s;
+    }
+    .container:hover{
+      box-shadow: none;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      transition: all 0.5s ease-in-out;
+      background: transparent;
+      opacity: 1;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    input::placeholder{
+      color: white;
+    }
+    input:focus::placeholder{
+      color: black;
+    }
+
+    input:hover{
+    padding: 13px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    input:focus{
+      background-color: whitesmoke;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      outline: none;
+    }
+    button {
+      background: #6a11cb;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2575fc;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeInn{
+      0%{
+        opacity: 0;
+        transform: translateX(200%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    }
+  </style>
+</head>
+<body>
+  <div id="totem">
+    <div class="container">
+    <div id="step-username">
+      <h2>Try an Username</h2>
+      <input type="text" id="username" placeholder="Username (5-13 chars)" required />
+      <button onclick="validateUsername()">Next</button>
+    </div>
+
+    <div id="step-password" class="hidden">
+      <h2>Enter Password</h2>
+      <input type="password" id="password" placeholder="Password" required />
+      <button onclick="validatePassword()">Next</button>
+    </div>
+
+    <div id="step-email" class="hidden">
+      <h2>Enter Email</h2>
+      <input type="email" id="email" placeholder="Email" required />
+      <button onclick="validateEmail()">Send OTP</button>
+    </div>
+
+    <div id="step-otp" class="hidden">
+      <h2>Enter OTP</h2>
+      <p id="otp-timer"></p>
+      <input type="text" id="otp" placeholder="xxxxxx" required />
+      <button onclick="validateOTP()">Verify</button>
+      <button id="resend-btn" class="hidden" onclick="sendOTP()">Resend OTP</button>
+    </div>
+  </div>
+  </div>
+  
+
+  <script>
+    let generatedOTP;
+    let otpTimeout;
+    let timerInterval;
+    let mail;
+    var body = document.getElementById("totem");
+    var usrname;
+    var otp=document.getElementById("otp");
+    function validateUsername() {
+      const username = document.getElementById("username").value;
+      const usernameRegex = /^[a-zA-Z0-9_]{5,13}$/;
+      if (usernameRegex.test(username)) {
+        document.getElementById("step-username").classList.add("hidden");
+        document.getElementById("step-password").classList.remove("hidden");
+        body.style.background=" linear-gradient(135deg, #ff2976, #2575fc)";
+        usrname=username;
+      } else {
+        alert("Invalid username. Please follow the guidelines.");
+      }
+    }
+
+    function validatePassword() {
+      const password = document.getElementById("password").value;
+      const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
+      if (passwordRegex.test(password)) {
+        document.getElementById("step-password").classList.add("hidden");
+        document.getElementById("step-email").classList.remove("hidden");
+        body.style.background=" linear-gradient(135deg,  #2575fc,#ff2976)";
+      } else {
+        alert("Password must be at least 5 characters long and include a number, a capital letter, and a special character.");
+      }
+    }
+
+    function validateEmail() {
+      const email = document.getElementById("email").value;
+      mail=email;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(email)) {
+        sendOTP();
+        document.getElementById("step-email").classList.add("hidden");
+        document.getElementById("step-otp").classList.remove("hidden");
+        body.style.background="linear-gradient(24deg, #ff2976, #2575fc)";
+      } else {
+        alert("Invalid email address.");
+      }
+    }
+
+    function sendOTP() {
+      generatedOTP = Math.floor(100000 + Math.random() * 900000);
+      otp=generatedOTP;
+      alert(`Your OTP is sent to ${mail}`);
+      //OUR NODE ROUTE
+      startOTPTimer();
+    }
+
+    function startOTPTimer() {
+      let timeLeft = 300;
+      clearInterval(timerInterval);
+
+      timerInterval = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById("otp-timer").textContent = `Time left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          alert("You didn't Entered the OTP");
+          document.getElementById("resend-btn").classList.remove("hidden");
+        }
+        timeLeft--;
+      }, 1000);
+
+      otpTimeout = setTimeout(() => {
+        generatedOTP = null; // Expire OTP
+      }, 300000);
+    }
+
+    function validateOTP() {
+      const otp = document.getElementById("otp").value;
+      if (otp == generatedOTP) {
+        alert("Signup successful!");
+        clearInterval(timerInterval);
+      } else {
+        alert("Invalid or expired OTP.");
+      }
+    }
+  </script>
+</body>
+</html>

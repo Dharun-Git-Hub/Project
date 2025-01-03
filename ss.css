@@ -1,0 +1,56 @@
+*{
+	margin: 0;
+}
+::selection{
+	background-color: #ff2976;
+	color: white;
+}
+#abstract{
+	margin: 20px;
+	animation: come 4s;
+	font-size: 56px;
+	background: -webkit-linear-gradient(16deg,#4b90ff,#ff5546);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.imgg{
+            width: 500px; height: 300px; border-radius: 15px; box-shadow: padding: 5px;
+  box-shadow: 0px 3px black;
+  transition: all 0.5s ease-in-out;
+        }
+        .imgg:hover{
+            padding: 5px;
+        }
+        #cent{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 300px;
+        }
+
+@keyframes come{
+	0%{
+		opacity: 0;
+		transform: translate(100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+@keyframes go{
+	0%{
+		opacity: 0;
+		transform: translate(-100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+.Intro2{
+	margin: 20px;
+	font-size: 38px;
+	animation: go 3s;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Project Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #4b90ff;
+      text-align: center;
+    }
+
+    .button {
+      background: linear-gradient(16deg, #4b90ff, #ff5546);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background: linear-gradient(16deg, #ff5546, #4b90ff);
+    }
+
+    .card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      z-index: 10;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      color: #ff5546;
+    }
+
+    .card p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #333;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Interactive Project Page</div>
+    <button class="button" data-target="ai-assistant">AI Assistant</button>
+    <button class="button" data-target="live-code-editor">Live Code Editor</button>
+    <button class="button" data-target="text-editor">Text Editor</button>
+    <button class="button" data-target="ai-image-generator">AI Image Generator</button>
+    <button class="button" data-target="maps">Maps</button>
+    <button class="button" data-target="music-player">Mini Music Player</button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="card" id="ai-assistant">
+    <button class="close-button">&times;</button>
+    <h2>AI Assistant</h2>
+    <p><b>Build:</b> It is built with our own UI Design and powered by Official Gemini AI pastly named Bard AI tool Integration. Thanks to APIs which helps us in integrating the AI Model to my project.</p>
+    <p><b>Advantages:</b> Using this AI assistant, you can skip the login process and ads to directly access responses and information.</p>
+    <p><b>Disadvantages:</b> The free API used for cost-cutting lacks performance in AI imagine and image generation features.</p>
+  </div>
+
+  <div class="card" id="live-code-editor">
+    <button class="close-button">&times;</button>
+    <h2>Live Code Editor</h2>
+    <p><b>Build:</b> The frontend is designed using React JS and CodeMirror library for syntax highlighting and live preview.</p>
+    <p><b>Advantages:</b> No need for extensions like Live Server; offers real-time previews of code.</p>
+    <p><b>Disadvantages:</b> Users need to download code files to save them as it uses a virtual engine for preview.</p>
+  </div>
+
+  <div class="card" id="text-editor">
+    <button class="close-button">&times;</button>
+    <h2>Text Editor</h2>
+    <p><b>Build:</b> A simple virtual word processor for tasks like creating documents, aligning text, and formatting.</p>
+    <p><b>Advantages:</b> Easy to use for quick tasks without needing full-fledged software like MS Word.</p>
+    <p><b>Disadvantages:</b> Users need to download files for local storage.</p>
+  </div>
+
+  <div class="card" id="ai-image-generator">
+    <button class="close-button">&times;</button>
+    <h2>AI Image Generator</h2>
+    <p><b>Build:</b> Utilizes Hugging Face's pre-trained Stable Diffusion model for image generation.</p>
+    <p><b>Advantages:</b> Generate images for educational or personal purposes without external tools.</p>
+    <p><b>Disadvantages:</b> Limited performance due to free-tier usage of Hugging Face's servers.</p>
+  </div>
+
+  <div class="card" id="maps">
+    <button class="close-button">&times;</button>
+    <h2>Maps</h2>
+    <p><b>Build:</b> Uses Nominatim API for location search and Leaflet.js for map rendering.</p>
+    <p><b>Advantages:</b> AI integration allows for easy navigation suggestions.</p>
+    <p><b>Disadvantages:</b> Limited free map data availability.</p>
+  </div>
+
+  <div class="card" id="music-player">
+    <button class="close-button">&times;</button>
+    <h2>Mini Music Player</h2>
+    <p><b>Build:</b> Lightweight music player for local storage files with a custom UI.</p>
+    <p><b>Advantages:</b> Simple and effective for entertainment during work or leisure.</p>
+    <p><b>Disadvantages:</b> Cannot stream online music currently.</p>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.button');
+    const overlay = document.getElementById('overlay');
+    const cards = document.querySelectorAll('.card');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const targetCard = document.getElementById(targetId);
+        if (targetCard) {
+          targetCard.style.display = 'block';
+          overlay.style.display = 'block';
+        }
+      });
+    });
+
+    document.querySelectorAll('.close-button').forEach(button => {
+      button.addEventListener('click', () => {
+        button.parentElement.style.display = 'none';
+        overlay.style.display = 'none';
+      });
+    });
+
+    overlay.addEventListener('click', () => {
+      cards.forEach(card => (card.style.display = 'none'));
+      overlay.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

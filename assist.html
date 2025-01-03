@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MATE Project Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #4b90ff, #ff5546);
+      color: #242424;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #242424;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #4b90ff;
+    }
+
+    section {
+      margin: 40px 0;
+      padding: 20px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2 {
+      margin-bottom: 20px;
+      color: #4b90ff;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+    }
+
+    .feature-card:hover{
+      box-shadow: 0px 3px black;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      top: 40px;
+      right: 20px;
+      padding: 10px 20px;
+      background: #242424;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: #4b90ff;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      header {
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">Change Theme</button>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#upcoming">Upcoming</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section id="about">
+      <h1>About Our Project</h1>
+      <p>MATE is an innovative utility application tailored for individuals performing a variety of tasks such as using AI assistants, creating word files, programming, and travel planning. With its user-focused features, MATE is more than a single project; it’s a multi-concept platform catering to diverse needs.</p>
+    </section>
+
+    <section id="features">
+      <h2 onclick="window.location.href='features.html'">Features</h2>
+      <div class="features">
+        <div onclick="window.location.href='assistant.html'" class="feature-card">
+          <h3>AI Assistant</h3>
+          <p>Your personal assistant for knowledge, solutions, and information.</p>
+        </div>
+        <div class="feature-card" onclick="window.location.href='editor.html'">
+          <h3>Live Code Editor</h3>
+          <p>A hassle-free editor for HTML, CSS, and JS with live preview.</p>
+        </div>
+        <div class="feature-card" onclick="window.location.href='text.html'">
+          <h3>Text Editor</h3>
+          <p>Minimalistic word processing with download options.</p>
+        </div>
+        <div class="feature-card" onclick="window.location.href='maps.html'">
+          <h3>AI Image Generator</h3>
+          <p>Create unique images using Hugging Face's stable diffusion model.</p>
+        </div>
+        <div class="feature-card" onclick="window.location.href='ims.html'">
+          <h3>Maps Feature</h3>
+          <p>Ask about your nearest places and suggestions.</p>
+        </div>
+         <div class="feature-card" onclick="window.location.href='music.html'">
+          <h3>Mini Music Player</h3>
+          <p>Your Day-to-Day Companion</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="upcoming">
+      <h2 onclick="window.location.href='upcome.html'">Upcoming Features</h2>
+      <p>Stay tuned for exciting additions like a Calendar with To-Do List, Mail Service, Chat Application, Translator Tool, and Local Weather Monitor.</p>
+    </section>
+
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const toggleButton = document.querySelector('.dark-mode-toggle');
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.style.background = '#242424';
+        document.body.style.color = 'black';
+        document.header.style.color = "#1f1f1f";
+      } else {
+        document.body.style.background = 'linear-gradient(to right, #4b90ff, #ff5546)';
+        document.body.style.color = '#242424';
+      }
+    }
+  </script>
+</body>
+</html>

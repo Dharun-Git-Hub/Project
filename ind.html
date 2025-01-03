@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+span{
+    user-select: none;
+    background: -webkit-linear-gradient(16deg,#4b90ff,#ff5546);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.box, .box2, .box3, .box4 {
+    width: 87%;
+    height: 600px;
+    margin: 50px 0;
+    padding: 20px;
+    border-radius: 50px;
+    background: transparent;
+    border: none;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-in-out;
+    opacity: -1;
+}
+
+.box.visible, .box2.visible, .box3.visible, .box4.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.7s ease-in-out;
+    filter: drop-shadow(0 0 1em #ffffff);
+}
+
+.box.visible:hover, .box2.visible:hover , .box3.visible:hover , .box4.visible:hover{
+    padding: 10px;
+    background: transparent;
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.Welcomenote{
+    font-size: 100px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: comeleft 1.5s;
+    color: whitesmoke;
+}
+@keyframes comeleft{
+    0%{
+        opacity: 0;
+        transform: translateX(200%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes comeright{
+    0%{
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes comedown{
+    0%{
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes comeup{
+    0%{
+        transform: translateY(200%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div  class="headercont">
+            
+        </div>
+        <div class="Welcomenote">
+            <span>MATE</span>
+        </div>
+        <div style="color:white; text-align: center;font-size: 30px; animation: comeup 2s; margin-top: 20vh">
+            This project named  <span style="color: cyan">MATE</span> is <ul>An Utility application</ul> which is very useful for "Individuals" who are doing tasks like Using AI Assistant, creating Simple*  Word Files frequently, Often works with Programming [ HTML, CSS, JS ], Often plan to go somewhere out.
+<br><br>
+    This is not a Single project but it has more than one concepts that are covered. Because, there might be several kind of people may use this application and their needs may vary. As a solution for this, I have added some commonly used features among them.
+   <br><br><br> 
+   <span style="color: cyan;">STUDENTS :</span> G. DHARUN VIGNESH , G.R. SHASTIE YOGESH<br>
+   <span style="color: cyan;">MENTOR : </span>Mr. SUDHERSUN C.B. , MCA, SET.
+<br><br><br>
+ <span style="color: cyan;">FRONTEND :</span> React Js with Vite Library<br>
+<span style="color: cyan;">BACKEND :</span> Node Js<br>
+    <span style="color: cyan;">DATABASE</span> MongoDB Cluster<br>
+<br><br>
+    This application has an Interactive Frontend works. Thanks to React Js with its Vite Library which enabled our application development fast and efficient. We often used Tailwind CSS to make the CSS works more easy and eye-catchy. Most of our works are based on the frontend; it needs a lot of work in frontend rather than in backend.
+<br><br>
+<br><br>
+This application has a significantly smaller backend works such as the Node JS scripts. It is used whenever the user access the Login Page or Signup Page. The backend takes care of the things about the authentication processes such as Sending OTP to their <b> EMAIL</b> and verifies them, Password Checking and Routing.
+<br><br>
+<br><br>
+<img style="width:50vw; height: 50vh; border-radius: 25px;" src="./MONGO.jfif"> 
+<br><br>
+<br><br>
+This application was powered with MongoDB Database management which is helpful in User Signup or Login of existing users.<br> We had used MongoDB as the Database for this app but later, we have the idea to make Software Application and Mobile Application versions of us. <br>So, we felt that MongoDB will not be a better choice then, I made a Cluster account for MongoDB and the Database is in the Cloud so the users can access their login details from any device , anywhere.
+<br><br>
+<br><br>
+<img style="width:50vw; height: 50vh; border-radius: 25px;" src="./REACT.avif"> 
+<br><br>
+<br><br>
+ This project needs Node JS, React JS, Vite Library to be installed to run. <br>Don't worry, I've embedded them in our package.json file so that you simply open and use the app without installing mannually. 
+<br>
+        I'm working in ACER ASPIRE 3 which has 16GB RAM and 512GB ROM powered by AMD Ryzen 5 7430U with Radeon Graphics.
+<br><br>
+<br><br>
+<img style="width:50vw; height: 50vh; border-radius: 25px;" src="./NODE.png"> 
+<br><br>
+<br><br>
+ We included all the Features as individual Components because it is very easy to reuse them in other codes if needed and they are independent so we just create them and manage them easily. The features ( which are currently available ) are listed below : 
+<br><br>
+<br><br>
+<span style="color: cyan">
+1. AI Assistant,<br>
+        2. Live Code Editor [Html, Css, Js],<br>
+        3. Text Editor,<br>
+        4. AI Image Generator,<br>
+        5. Maps ( Alone & Integrated with AI ),<br>
+        6. Mini Music Player,<br>
+    </span>
+<br><br>
+        </div>
+
+        <img class="box" src="./ABOUT-IMAGE.jfif" onclick="window.location.href='assist.html'"><div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">ABOUT US</div>
+        <img class="box2" src="AI-IMAGE.jpg" onclick="window.location.href='assistant.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">AI ASSISTANT</div>
+        <img class="box3" src="./CODER-IMAGE.jpg" onclick="window.location.href='editor.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">LIVE CODE EDITOR</div>
+        <img class="box4" src="./NOTEPAD.jfif" onclick="window.location.href='text.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">TEXT EDITOR</div>
+        <img class="box4" src="./IMAGER.webp" onclick="window.location.href='maps.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">AI IMAGE GENERATOR</div>
+        <img class="box3" src="./MAPS-IMAGE.jpg" onclick="window.location.href='ims.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">MAPS & AI</div>
+        <img class="box2" src="./MUSICS.jfif" onclick="window.location.href='music.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">MUSIC PLAYER</div>
+        <img class="box4" src="./COMING.jfif" onclick="window.location.href='upcome.html'">
+        <div style="color: cyan; font-size:50px;text-align: left;padding-bottom: 30vh;">UNDER CONSTRUCTION</div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.box');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.animation="comeup 1.5s ease-in-out";
+            }
+            if (!entry.isIntersecting) {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    boxes.forEach(box => {
+        observer.observe(box);
+    });
+});
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.box2');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.animation="comeleft 1.5s ease-in-out";
+            }
+            if (!entry.isIntersecting) {
+                entry.target.classList.remove('visible');
+            } 
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    boxes.forEach(box => {
+        observer.observe(box);
+    });
+});
+        document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.box3');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.animation="comedown 1.5s ease-in-out";
+            }
+            if (!entry.isIntersecting) {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    boxes.forEach(box => {
+        observer.observe(box);
+    });
+});
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.box4');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.animation="comeright 1.5s ease-in-out";
+            }
+            if (!entry.isIntersecting) {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    boxes.forEach(box => {
+        observer.observe(box);
+    });
+});
+
+    </script>
+</body>
+</html>
